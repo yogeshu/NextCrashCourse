@@ -1,6 +1,7 @@
 import Repo from "@/app/components/Repo";
+import RepoDris from "@/app/components/RepoDris";
 import Link from "next/link";
-import React from "react";
+import React, { Suspense } from "react";
 
 const RepoPage = ({ params: { name } }) => {
   return (
@@ -9,6 +10,9 @@ const RepoPage = ({ params: { name } }) => {
         back to repos
       </Link>
       <Repo name={name} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <RepoDris name={name} />
+      </Suspense>{" "}
     </div>
   );
 };
